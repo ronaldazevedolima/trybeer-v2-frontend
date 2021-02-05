@@ -32,8 +32,9 @@ function Register() {
       const {
         signName, signEmail, signPassword, signRole,
       } = values;
+      console.log('values', values);
       const signUp = await postRegister(signName, signEmail, signPassword, signRole);
-
+      console.log('singup', signUp);
       if (signUp.status !== statusCode) {
         setError(signUp.data.message);
         setIsOpen(true);
