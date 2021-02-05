@@ -32,9 +32,7 @@ function Register() {
       const {
         signName, signEmail, signPassword, signRole,
       } = values;
-      console.log('values', values);
       const signUp = await postRegister(signName, signEmail, signPassword, signRole);
-      console.log('singup', signUp);
       if (signUp.status !== statusCode) {
         setError(signUp.data.message);
         setIsOpen(true);
@@ -42,7 +40,7 @@ function Register() {
         return null;
       }
       if (!localStorage.user) localStorage.user = JSON.stringify(signUp.data);
-      const redirect = jwtDecode(signUp.data).role === 'client' ? '/products' : '/admin/orders';
+      const redirect = jwtDecode(signUp.data).dataValues.role === 'client' ? '/products' : '/admin/orders';
       return history.push(redirect);
     },
   });
