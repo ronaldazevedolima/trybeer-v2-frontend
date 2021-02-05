@@ -21,7 +21,7 @@ export const postRegister = async (signName, signEmail, signPassword, signRole) 
     signPassword,
     signRole,
   })
-  .catch(({ response }) => response);
+  .catch(({ response }) => console.log(response));
 
 export const listProducts = async () => axios
   .get(`${url}/products`)
